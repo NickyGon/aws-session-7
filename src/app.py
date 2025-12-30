@@ -47,3 +47,19 @@ def create_handler(event, context):
         "body": json.dumps({"code": code, "short_url": short_url}),
     }
 
+def resolve_handler(event, context):
+    """
+    GET /{code}
+    """
+    code = event["pathParameters"]["code"]
+
+    resp = table.get_item(
+        Key={"code": code},
+        ConsistentRead=True,
+    )
+
+    return {
+        "statusCode": 302,
+        "headers": {"Location": resp["Item"]["long_url"]},
+        "body": "",
+    }
