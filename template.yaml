@@ -13,10 +13,10 @@ Globals:
         TABLE_NAME: UrlShortenerTable
 
 Resources:
-  Api:
-    Type: AWS::Serverless::Api
-    Properties:
-      StageName: prod
+  # Api:
+  #   Type: AWS::Serverless::Api
+  #   Properties:
+  #     StageName: prod
 
   UrlShortenerTable:
     Type: AWS::DynamoDB::Table
